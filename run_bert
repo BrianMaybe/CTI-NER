@@ -1,0 +1,63 @@
+from transformers_ner import TransformersNER
+
+# BERTs that 2021-pavlos used are:
+# BERT base, ELECTRA base, RoBERTa base, XLNet base
+# others: LSTM, BiLSTM
+# plus from recommended: ALBERT, DistilBERT
+
+def run_bert():
+    # 1.BERT-base-uncased
+    # 2.google/electra-base-discriminator
+    # 3.RoBERTa-base
+    # cfg3 = {'checkpoint_dir': 'logs/roberta-large',
+    #         'dataset': 'D:\\CodeFile\\myNER\\CyNER\\dataset\\DNR',
+    #         'transformers_model': 'roberta-large',      # out of memory
+    #         'lr': 1e-5,
+    #         'epochs': 20,
+    #         'batch_size': 8,
+    #         'max_seq_length': 128}
+    # model3 = TransformersNER(cfg3)
+    # model3.train()
+
+    # cfg2 = {'checkpoint_dir': 'logs/xlm-roberta-large',
+    #         'dataset': 'dataset/mitre',
+    #         'transformers_model': 'xlm-roberta-large',
+    #         'lr': 5e-6,
+    #         'epochs': 20,
+    #         'max_seq_length': 256}
+    # model2 = TransformersNER(cfg2)
+    # model2.train()
+
+    # cfg4 = {'checkpoint_dir': 'logs/roberta-base-2',
+    #         'dataset': 'D:\\CodeFile\\myNER\\CyNER\\dataset\\DNR',
+    #         'transformers_model': 'roberta-base',  # out of memory
+    #         'lr': 1e-4,  # 1e-5
+    #         'epochs': 20,
+    #         'batch_size': 8,  # 8  影响收敛速度
+    #         'max_seq_length': 128}
+    # model4 = TransformersNER(cfg4)
+    # model4.train()
+
+    # cfg5 = {'checkpoint_dir': 'logs/xlnet-base-cased',
+    #         'dataset': 'D:\\CodeFile\\myNER\\CyNER\\dataset\\DNR',
+    #         'transformers_model': 'xlnet-base-cased',  # out of memory
+    #         'lr': 1e-5,  # 1e-5
+    #         'epochs': 20,
+    #         'batch_size': 8,  # 8  影响收敛速度
+    #         'max_seq_length': 128}
+    # model5 = TransformersNER(cfg5)
+    # model5.train()
+    dataset = '../dataset/DNR'
+    cfg6 = {'checkpoint_dir': 'logs/xlm-roberta-DNRTIext',
+            'dataset': dataset,
+            'transformers_model': 'xlm-roberta-base',  # out of memory
+            'lr': 1e-5,  # 1e-5
+            'epochs': 30,
+            'batch_size': 8,  # 8  影响收敛速度
+            'max_seq_length': 128}
+    model6 = TransformersNER(cfg6)
+    model6.train()
+
+
+if __name__ == '__main__':
+    run_bert()
